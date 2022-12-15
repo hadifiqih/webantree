@@ -1,0 +1,28 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/konterdi/webantree.konterdigital.com/
+    - /bin/cp -R ajax $DEPLOYPATH
+    - /bin/cp -R css $DEPLOYPATH
+    - /bin/cp -R dokumentasi $DEPLOYPATH
+    - /bin/cp -R file $DEPLOYPATH
+    - /bin/cp -R img $DEPLOYPATH
+    - /bin/cp -R js $DEPLOYPATH
+    - /bin/cp -R logo $DEPLOYPATH
+    - /bin/cp connection.php $DEPLOYPATH
+    - /bin/cp delete-antrian.php $DEPLOYPATH
+    - /bin/cp dokumentasi-page.php $DEPLOYPATH
+    - /bin/cp edit-antrian.php $DEPLOYPATH
+    - /bin/cp edit-file.php $DEPLOYPATH
+    - /bin/cp form-daftar.php $DEPLOYPATH
+    - /bin/cp list-antrian.php $DEPLOYPATH
+    - /bin/cp login.php $DEPLOYPATH
+    - /bin/cp logout.php $DEPLOYPATH
+    - /bin/cp pricelist.php $DEPLOYPATH
+    - /bin/cp proses-antrian.php $DEPLOYPATH
+    - /bin/cp proses-dokumentasi.php $DEPLOYPATH
+    - /bin/cp proses-edit-file.php $DEPLOYPATH
+    - /bin/cp proses-edit.php $DEPLOYPATH
+    - /bin/cp registrasi.php $DEPLOYPATH
+    - /bin/cp upload-dokumentasi.php $DEPLOYPATH
+    - /bin/cp index.php $DEPLOYPATH
