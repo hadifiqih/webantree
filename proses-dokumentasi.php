@@ -30,22 +30,32 @@ if (isset($_POST['submitDocs'])) {
 
         $namaFileBaru = $namaEnc . '-' . $namafile;
 
-        if (in_array($ekstensi, $izinEkstensi) === true) {
-            //----------------------------------------
-            move_uploaded_file($file_tmp, 'dokumentasi/' . $namaFileBaru);
+        // if (in_array($ekstensi, $izinEkstensi) === true) {
+        //     //----------------------------------------
+        //     move_uploaded_file($file_tmp, 'dokumentasi/' . $namaFileBaru);
 
-            $sql = "UPDATE data_antrian SET file_dokumentasi='$namaFileBaru' WHERE no_antrian='$id'";
-            $query = mysqli_query($connect, $sql);
+        //     $sql = "UPDATE data_antrian SET file_dokumentasi='$namaFileBaru' WHERE no_antrian='$id'";
+        //     $query = mysqli_query($connect, $sql);
 
-            if ($query) {
-                header('location: list-antrian.php?pesan=fileberhasil');
-            } else {
-                print_r(mysqli_error($connect));
+        //     if ($query) {
+        //         header('location: list-antrian.php?pesan=fileberhasil');
+        //     } else {
+        //         print_r(mysqli_error($connect));
+        //     }
+        // } else {
+        //     header('location: list-antrian.php?pesan=salahekstensi');
+        // }
+        foreach ($_FILES['files']['name'] as $i => $name) {
+            if (strlen($_FILES['files']['name'][$i]) > 1) {
+              if (move_uploaded_file($_FILES['files']['tmp_name'][$i], 'dokumentasi/' . $name)) {
+                echo "File uploaded successfully.";
+              } else {
+                echo "There was an error uploading the file.";
+              }
             }
-        } else {
-            header('location: list-antrian.php?pesan=salahekstensi');
+          }
+          
         }
     } else {
         header('location: list-antrian.php?pesan=filekosong');
     }
-}

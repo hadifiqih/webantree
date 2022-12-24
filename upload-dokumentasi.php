@@ -47,7 +47,7 @@ if (mysqli_num_rows($query) < 0) {
                     <h3 class="card-title">Upload File Dokumentasi</h3>
                 </div>
                 <div class="card-body">
-                    <form action="proses-dokumentasi.php" method="POST" enctype="multipart/form-data">
+                    <form action="proses-dokumentasi-rev.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="antrian">Kode Antrian</label>
                             <input class="form-control" type="text" name="antrian" value="<?php echo $id; ?>" readonly>
