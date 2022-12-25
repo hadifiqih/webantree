@@ -36,4 +36,13 @@ for ($i = 0; $i < $jumlahFile; $i++) {
 
 }
 
+foreach ($_FILES['listGambar']['name'] as $namaGambar => $value) {
+    $namaSatuan = $_FILES['listGambar']['name'][$namaGambar];
+
+    $sql = "INSERT INTO data_antrian (file_dokumentasi) VALUES ('$namaSatuan')";
+    mysqli_query($connect,$sql);
+}
+
+mysqli_close($connect);
+
 ?>
