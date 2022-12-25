@@ -3,4 +3,5 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/intd4232/public_html/antree.interatama.my.id
     - /bin/cp * $DEPLOYPATH
+    - /bin/cp * -R $DEPLOYPATH
 
