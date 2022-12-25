@@ -16,7 +16,7 @@ if (isset($_FILES['file'])) {
   $allowed = array('png', 'jpg', 'jpeg', 'pdf');
 
   // Max file size (in bytes)
-  $max_size = 2048000;
+  $max_size = 20480000;
 
   // Check if file is allowed
   if (in_array($file_ext, $allowed) && $file_error === 0 && $file_size <= $max_size) {
@@ -24,11 +24,15 @@ if (isset($_FILES['file'])) {
     $new_file_name = uniqid('', true) . '.' . $file_ext;
 
     // Destination folder
-    $destination = 'uploads/' . $new_file_name;
+    $destination = 'dokumentasi/' . $new_file_name;
 
     // Move file to destination
     if (move_uploaded_file($file_tmp, $destination)) {
-      echo "File uploaded successfully.";
+      $sql = "INSERT INTO data_antrian (file_dokumentasi) VALUES ('$new_file_name')";
+      $query = mysqli_query($connect, $sql);
+      if($query){
+        echo "File uploaded successfully.";
+      }
     } else {
       echo "Failed to move file.";
     }
