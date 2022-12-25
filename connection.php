@@ -1,6 +1,6 @@
 <?php
 
-$connect = mysqli_connect('localhost', 'root', '', 'konterdi_antree');
+$connect = mysqli_connect('localhost', 'intd4232_antree', 'adminantree', 'intd4232_webantree');
 
 if ($connect) {
     // echo "Berhasil";
