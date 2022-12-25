@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/konterdi/webantree.konterdigital.com/
+    - export DEPLOYPATH=/home/intd4232/public_html/antree.interatama.my.id
     - /bin/cp -R ajax $DEPLOYPATH
     - /bin/cp -R css $DEPLOYPATH
     - /bin/cp -R dokumentasi $DEPLOYPATH
