@@ -24,6 +24,8 @@ for ($i = 0; $i < $jumlahFile; $i++) {
     $lokasiBaru = "{$folderUpload}/{$namaBaru}";
 
     $prosesUpload = move_uploaded_file($lokasiTmp, $lokasiBaru);
+
+    $namaToDB = implode(', ', "$namaBaru");
     
     $sql = "UPDATE data_antrian SET file_dokumentasi='$namaBaru' WHERE no_antrian='$id'";
     mysqli_query($connect,$sql);
