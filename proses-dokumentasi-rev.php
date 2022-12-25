@@ -8,6 +8,8 @@ if (isset($_FILES['file'])) {
   $file_size = $_FILES['file']['size'];
   $file_error = $_FILES['file']['error'];
 
+  
+
   // File extension
   $file_ext = explode('.', $file_name);
   $file_ext = strtolower(end($file_ext));
@@ -26,10 +28,18 @@ if (isset($_FILES['file'])) {
     // Destination folder
     $destination = 'dokumentasi/' . $new_file_name;
 
+    // Cek Folder ada / tidak
+    if(!is_dir($destination)){
+      mkdir($destination,0755);
+    }else{
+      echo "Folder sudah terbuat";
+    }
+
     // Move file to destination
     if (move_uploaded_file($file_tmp, $destination)) {
-      $sql = "INSERT INTO data_antrian (file_dokumentasi) VALUES ('$new_file_name')";
+      $sql = "UPDATE data_antrian SET file_dokumentasi='$new_file_name' WHERE no_antrian='$id'";
       $query = mysqli_query($connect, $sql);
+
       if($query){
         echo "File uploaded successfully.";
       }
