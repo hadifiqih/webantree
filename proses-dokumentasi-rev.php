@@ -1,7 +1,5 @@
 <?php
 
-<?php
-
 $files = $_FILES;
 
 $id = $_POST['antrian'];
@@ -131,5 +129,3 @@ for ($i = 0; $i < $jumlahFile; $i++) {
 //     echo "Invalid file.";
 //   }
 // }
-
-?>
