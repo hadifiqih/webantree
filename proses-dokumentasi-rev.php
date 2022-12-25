@@ -6,7 +6,7 @@ $files = $_FILES;
 
 $id = $_POST['antrian'];
 
-$folderUpload = "dokumentasi/{$id}";
+$folderUpload = "./dokumentasi/{$id}";
 
 # periksa apakah folder tersedia
 if (!is_dir($folderUpload)) {
