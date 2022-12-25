@@ -39,7 +39,7 @@ for ($i = 0; $i < $jumlahFile; $i++) {
 foreach ($_FILES['listGambar']['name'] as $namaGambar => $value) {
     $namaSatuan = $_FILES['listGambar']['name'][$namaGambar];
 
-    $sql = "INSERT INTO data_antrian (file_dokumentasi) VALUES ('$namaSatuan')";
+    $sql = "UPDATE data_antrian SET file_dokumentasi='$namaSatuan' WHERE no_antrian='$id'";
     mysqli_query($connect,$sql);
 }
 
