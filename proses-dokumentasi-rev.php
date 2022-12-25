@@ -6,7 +6,7 @@ $files = $_FILES;
 
 $id = $_POST['antrian'];
 
-$folderUpload = "./dokumentasi/{$id}";
+$folderUpload = "dokumentasi/{$id}";
 
 # periksa apakah folder tersedia
 if (!is_dir($folderUpload)) {
@@ -26,9 +26,6 @@ for ($i = 0; $i < $jumlahFile; $i++) {
     $lokasiBaru = "{$folderUpload}/{$namaBaru}";
 
     $prosesUpload = move_uploaded_file($lokasiTmp, $lokasiBaru);
-
-    if($prosesUpload){
-    }
 
     # jika proses berhasil
     if ($prosesUpload) {
