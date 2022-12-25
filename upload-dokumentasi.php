@@ -54,7 +54,7 @@ if (mysqli_num_rows($query) < 0) {
                         </div>
                         <br>
                         <p class="text-muted">Browse file dokumentasi :</p>
-                        <input name="listDokumentasi[]" type="file" class="form-control" multiple>
+                        <input name="listGambar[]" type="file" class="form-control" multiple>
                         <p class="text-muted fst-italic">*File yang diupload harus berupa file .jpg / .png -
                             (Maks.
                             50Mb)</p>
