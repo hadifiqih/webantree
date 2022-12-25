@@ -3,6 +3,10 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/intd4232/public_html/antree.interatama.my.id
     - /bin/cp * $DEPLOYPATH
-    - /bin/cp -R $DEPLOYPATH
-
+    - /bin/cp -R css $DEPLOYPATH
+    - /bin/cp -R dokumentasi $DEPLOYPATH
+    - /bin/cp -R file $DEPLOYPATH
+    - /bin/cp -R img $DEPLOYPATH
+    - /bin/cp -R js $DEPLOYPATH
+    - /bin/cp -R logo $DEPLOYPATH
 
