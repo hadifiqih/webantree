@@ -39,8 +39,7 @@ for ($i = 0; $i < $jumlahFile; $i++) {
   }
 
 }
-    for
-    $namaToString = implode(', ', "$namaToDB");
+    $namaToString = implode(', ', $namaToDB[]);
 
     echo ($namaToString);
     
