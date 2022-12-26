@@ -1,5 +1,7 @@
 <?php
 
+include("connection.php");
+
 $files = $_FILES;
 
 $id = $_POST['antrian'];
@@ -40,13 +42,8 @@ for ($i = 0; $i < $jumlahFile; $i++) {
 
 }
     $namaToString = implode(', ', $namaToDB[]);
-
-    echo ($namaToString);
     
     $sql = "UPDATE data_antrian SET file_dokumentasi='$namaToString' WHERE no_antrian='$id'";
     mysqli_query($connect,$sql);
-
-
-mysqli_close($connect);
 
 ?>
