@@ -14,6 +14,8 @@ if (!is_dir($folderUpload)) {
 
 $jumlahFile = count($files['listGambar']['name']);
 
+$namaToDB = array();
+
 for ($i = 0; $i < $jumlahFile; $i++) {
     $namaFile = $files['listGambar']['name'][$i];
     $lokasiTmp = $files['listGambar']['tmp_name'][$i];
@@ -21,16 +23,11 @@ for ($i = 0; $i < $jumlahFile; $i++) {
     # kita tambahkan uniqid() agar nama gambar bersifat unik
     $namaBaru = uniqid() . '-' . $namaFile;
 
+    $namaToDB[] = $namaBaru;
+
     $lokasiBaru = "{$folderUpload}/{$namaBaru}";
 
     $prosesUpload = move_uploaded_file($lokasiTmp, $lokasiBaru);
-
-    $namaToDB = array();
-
-    $namaToDB = implode(', ', "$namaBaru");
-    
-    $sql = "UPDATE data_antrian SET file_dokumentasi='$namaToDB' WHERE no_antrian='$id'";
-    mysqli_query($connect,$sql);
 
     # jika proses berhasil
     if ($prosesUpload) {
@@ -42,6 +39,11 @@ for ($i = 0; $i < $jumlahFile; $i++) {
   }
 
 }
+
+    $namaToString = implode(', ', "$namaToDB");
+    
+    $sql = "UPDATE data_antrian SET file_dokumentasi='$namaToString' WHERE no_antrian='$id'";
+    mysqli_query($connect,$sql);
 
 mysqli_close($connect);
 
