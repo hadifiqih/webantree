@@ -33,13 +33,11 @@ for ($i = 0; $i < $jumlahFile; $i++) {
 
     # jika proses berhasil
     if ($prosesUpload) {
-      header('location: list-antrian.php?pesan=fileberhasil');
+        echo "file berhasil di upload";
 
-  } else {
-      echo "<span style='color: red'>Upload file {$namaFile} gagal</span> <br>";
-        
-      echo "<button href='list-antrian.php'>Kembali ke beranda</button>";
-  }
+    } else {
+        echo "<span style='color: red'>Upload file {$namaFile} gagal</span> <br>";
+    }
 
 }
     $namaToString = implode(', ', $namaToDB);
