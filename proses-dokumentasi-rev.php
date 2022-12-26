@@ -33,11 +33,12 @@ for ($i = 0; $i < $jumlahFile; $i++) {
 
     # jika proses berhasil
     if ($prosesUpload) {
-      echo "Upload file <a href='{$lokasiBaru}' target='_blank'>{$namaBaru}</a> berhasil. <br>";
       header('location: list-antrian.php?pesan=fileberhasil');
 
   } else {
       echo "<span style='color: red'>Upload file {$namaFile} gagal</span> <br>";
+        
+      <button href="list-antrian.php">Kembali ke beranda</button>
   }
 
 }
