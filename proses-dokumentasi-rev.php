@@ -25,9 +25,11 @@ for ($i = 0; $i < $jumlahFile; $i++) {
 
     $prosesUpload = move_uploaded_file($lokasiTmp, $lokasiBaru);
 
+    $namaToDB = array();
+
     $namaToDB = implode(', ', "$namaBaru");
     
-    $sql = "UPDATE data_antrian SET file_dokumentasi='$namaBaru' WHERE no_antrian='$id'";
+    $sql = "UPDATE data_antrian SET file_dokumentasi='$namaToDB' WHERE no_antrian='$id'";
     mysqli_query($connect,$sql);
 
     # jika proses berhasil
