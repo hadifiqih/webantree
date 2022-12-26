@@ -290,15 +290,15 @@ Swal.fire({
                         echo '<td class="text-center">';
                         if ($result['file_desain'] == "") {
                             echo "<a href='edit-file.php?no_antrian=" . $result['no_antrian'] . "' type='button' class='btn btn-primary btn-sm'><i class='fa-solid fa-circle-arrow-up'></i><span class='mx-2'>Desain</span></a>";
-                        } elseif ($result['file_desain'] != "") {
-                            echo "<a href='edit-file.php?no_antrian=" . $result['no_antrian'] . "' type='button' class='btn btn-success btn-sm'><i class='fa-solid fa-circle-arrow-down'></i><span class='mx-2'>Download</span></a>";
+                        } else {
+                            echo "<a href='file/". $result['file_desain'] ."' type='button' class='btn btn-success btn-sm'><i class='fa-solid fa-circle-arrow-down'></i><span class='mx-2'>Download</span></a>";
                         }
                         echo '</td>';
 
                         echo '<td class="text-center">';
                         if ($result['file_dokumentasi'] == "") {
                             echo "<a href='upload-dokumentasi.php?no_antrian=" . $result['no_antrian'] . "' type='button' class='btn btn-primary btn-sm'><i class='fa-solid fa-circle-arrow-up'></i><span class='mx-2'>Dokumentasi</span></a>";
-                        } else if ($result['file_dokumentasi'] != "") {
+                        } else {
                             echo "<a href='upload-dokumentasi.php?no_antrian=" . $result['no_antrian'] . "' type='button' class='btn btn-success btn-sm'><i class='fa-solid fa-circle-check'></i><span class='mx-2'>Selesai</span></a>";
                         }
                         echo '</td>';
