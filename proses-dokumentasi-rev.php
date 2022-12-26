@@ -41,7 +41,7 @@ for ($i = 0; $i < $jumlahFile; $i++) {
   }
 
 }
-    $namaToString = implode(', ', $namaToDB[]);
+    $namaToString = implode(', ', $namaToDB);
     
     $sql = "UPDATE data_antrian SET file_dokumentasi='$namaToString' WHERE no_antrian='$id'";
     mysqli_query($connect,$sql);
