@@ -38,7 +38,7 @@ for ($i = 0; $i < $jumlahFile; $i++) {
   } else {
       echo "<span style='color: red'>Upload file {$namaFile} gagal</span> <br>";
         
-      <button href="list-antrian.php">Kembali ke beranda</button>
+      echo "<button href="list-antrian.php">Kembali ke beranda</button>"
   }
 
 }
