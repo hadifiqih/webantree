@@ -54,7 +54,7 @@ if (isset($_POST['daftar'])) {
                            " - ".mysqli_error($connect));
                 } else {
                     $_SESSION['successAntrian'];
-                    header('location: list-antrian.php?sukses');
+                    header('location: list-antrian.php');
                 }
             } else {
                 $_SESSION['salah_ekstensi'] = 'Upload file sesuai ekstensi!';
