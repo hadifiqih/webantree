@@ -49,8 +49,8 @@ for ($i = 0; $i < $jumlahFile; $i++) {
     if(mysqli_query($connect,$sql)){
         echo "berhasil mengisi di database";
     }
-    else(
+    else{
         echo "tidak berhasil menyimpan ke DB";
-    )
+    }
 
 ?>
