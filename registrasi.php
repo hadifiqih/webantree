@@ -128,7 +128,7 @@ if(isset($_POST['register'])){
                             </div>
                         </div>
                     </div>
-                    <div class="text-center mt-5 text-muted">
+                    <div class="text-center mt-5 text-muted mb-5">
                         Copyright &copy; 2022 &mdash; by Hadi Fiqih
                     </div>
                 </div>
