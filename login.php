@@ -29,8 +29,13 @@ if(isset($_POST['login'])){
     if(mysqli_num_rows($result) === 1){
         //cek password
         $row = mysqli_fetch_assoc($result);
-        $checkpass = password_verify($password, $row['password']);
-        if($checkpass == true){
+        // $checkpass = password_verify($password, $row['password']);
+        $sandiTerenkripsi = $row['kata_sandi'];
+        $saltKeamanan = $row['salt'];
+
+        $inputTerenkripsi = hash('sha256', $saltKeamanan . $password);
+
+        if($sandiTerenkripsi == $inputTerenkripsi){
             $_SESSION['login'] = true;
 
             if(isset($_POST['remember'])){
@@ -40,9 +45,16 @@ if(isset($_POST['login'])){
 
             header('location:list-antrian.php');
             exit;
+        }   
+        else{
+           echo '<div class="alert alert-danger" role="alert">Kata sandi salah !</div>';
+
         }
     }
-    $error = true;
+    else {
+        echo '<div class="alert alert-danger" role="alert">Username tidak ditemukan !</div>';
+    }
+    
 }
 
 ?>
