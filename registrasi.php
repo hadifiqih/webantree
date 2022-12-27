@@ -1,3 +1,43 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['login'])) {
+    header('location:list-antrian.php');
+    exit;
+}
+
+require 'connection.php';
+
+if(isset($_POST['register'])){
+
+    $username = $_POST['username'];
+    $namaLengkap = $_POST['namaUser'];
+    $kataSandi = $_POST['password'];
+    $divisi = $_POST['divisi'];
+
+    //Enkripsi Password
+    $saltKeamanan = bin2hex(random_bytes(32));
+    $sandiTerenkripsi = hash('sha256', $saltKeamanan . $kataSandi);
+
+    //select username terdaftar
+    $sql = "SELECT * FROM data_user WHERE username='$username'";
+    $query = mysqli_query($connect,$sql);
+    // cek username terdaftar
+    if(mysqli_num_rows($query) > 0){
+        echo '<div class="alert alert-danger" role="alert">Username sudah terdaftar, gunakan username lain !</div>"';
+    }
+    else {
+        //Jika username aman, Menyimpan ke database
+        $sql = "INSERT INTO data_user (username, kata_sandi, salt , nama, divisi) VALUES ('$username', '$sandiTerenkripsi', '$saltKeamanan' , '$namaLengkap', '$divisi')";
+        $query = mysqli_query($connect,$sql);
+
+        echo '< class="alert alert-success" role="alert">Registrasi berhasil, silahkan <a href="login.php" class="alert-link">klik disini</a> untuk login</div>"';
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,48 +135,6 @@
             </div>
         </div>
     </section>
-
-    <script src="js/login.js"></script>
 </body>
 
 </html>
-
-<?php
-
-session_start();
-
-if (isset($_SESSION['login'])) {
-    header('location:list-antrian.php');
-    exit;
-}
-
-require 'connection.php';
-
-if(isset($_POST['register'])){
-
-    $username = $_POST['username'];
-    $namaLengkap = $_POST['namaUser'];
-    $kataSandi = $_POST['password'];
-    $divisi = $_POST['divisi'];
-
-    //Enkripsi Password
-    $saltKeamanan = bin2hex(random_bytes(32));
-    $sandiTerenkripsi = hash('sha256', $saltKeamanan . $kataSandi);
-
-    //select username terdaftar
-    $sql = "SELECT * FROM data_user WHERE username='$username'";
-    $query = mysqli_query($connect,$sql);
-    // cek username terdaftar
-    if(mysqli_num_rows($query) > 0){
-        echo '<div class="alert alert-danger" role="alert">Username sudah terdaftar, gunakan username lain !</div>"';
-    }
-    else {
-        //Jika username aman, Menyimpan ke database
-        $sql = "INSERT INTO data_user (username, kata_sandi, salt , nama, divisi) VALUES ('$username', '$sandiTerenkripsi', '$saltKeamanan' , '$namaLengkap', '$divisi')";
-        $query = mysqli_query($connect,$sql);
-
-        echo '< class="alert alert-success" role="alert">Registrasi berhasil, silahkan <a href="login.php" class="alert-link">klik disini</a> untuk login</div>"';
-    }
-}
-
-?>
