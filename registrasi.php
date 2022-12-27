@@ -32,7 +32,7 @@ if(isset($_POST['register'])){
         $sql = "INSERT INTO data_user (username, kata_sandi, salt , nama, divisi) VALUES ('$username', '$sandiTerenkripsi', '$saltKeamanan' , '$namaLengkap', '$divisi')";
         $query = mysqli_query($connect,$sql);
 
-        echo '< class="alert alert-success" role="alert">Registrasi berhasil, silahkan <a href="login.php" class="alert-link">klik disini</a> untuk login</div>"';
+        echo '<div class="alert alert-success" role="alert">Registrasi berhasil, silahkan <a href="login.php" class="alert-link">klik disini</a> untuk login</div>"';
     }
 }
 
