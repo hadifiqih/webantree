@@ -47,12 +47,12 @@ if(isset($_POST['login'])){
             exit;
         }   
         else{
-           echo '<div class="alert alert-danger" role="alert">Kata sandi salah !</div>';
+           echo '<div class="alert alert-danger" role="alert">Kata sandi salah ! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
         }
     }
     else {
-        echo '<div class="alert alert-danger" role="alert">Username tidak ditemukan !</div>';
+        echo '<div class="alert alert-danger" role="alert">Username tidak ditemukan ! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
     }
     
 }
@@ -64,7 +64,7 @@ if(isset($_POST['login'])){
 
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="Muhamad Nauval Azhar">
+    <meta name="author" content="M. Hadi Fiqih Pratama">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="This is a login page template based on Bootstrap 5">
     <title>Login - Antree Web App</title>
