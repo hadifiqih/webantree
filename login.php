@@ -47,12 +47,12 @@ if(isset($_POST['login'])){
             exit;
         }   
         else{
-           echo '<div class="alert alert-danger" role="alert">Kata sandi salah ! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+           echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Kata sandi salah ! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
         }
     }
     else {
-        echo '<div class="alert alert-danger" role="alert">Username tidak ditemukan ! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Username tidak ditemukan ! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
     }
     
 }
