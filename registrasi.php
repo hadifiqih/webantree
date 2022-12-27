@@ -63,7 +63,7 @@ if(isset($_POST['register'])){
                         <div class="card-body p-5">
                             <h1 class="fs-4 card-title fw-bold mb-4">Daftar</h1>
 
-                            <form action="simpan-registrasi.php" method="POST" class="needs-validation" autocomplete="off" novalidate>
+                            <form action="" method="POST" class="needs-validation" autocomplete="off" novalidate>
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="name">Username</label>
                                     <input id="name" type="text" class="form-control" name="username" value="" required
