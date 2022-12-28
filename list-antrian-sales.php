@@ -145,14 +145,24 @@ Swal.fire({
             <!-- <td scope="col" class="text-center">File Desain</td> -->
             <?php
             echo '<td class="text-center">';
-                        if ($result['file_dokumentasi'] == "") {
-                            echo "<a href='upload-dokumentasi.php?no_antrian=" . $result['no_antrian'] . "' type='button' class='btn btn-primary btn-sm'><i class='fa-solid fa-circle-arrow-up'></i><span class='mx-2'>Dokumentasi</span></a>";
+                        if ($data['file_dokumentasi'] == "") {
+                            echo "<a href='upload-dokumentasi.php?no_antrian=" . $data['no_antrian'] . "' type='button' class='btn btn-disable btn-sm'><i class='fa-solid fa-circle-arrow-up'></i><span class='mx-2'>Dokumentasi</span></a>";
                         } else {
-                            echo "<a href='upload-dokumentasi.php?no_antrian=" . $result['no_antrian'] . "' type='button' class='btn btn-success btn-sm'><i class='fa-solid fa-circle-check'></i><span class='mx-2'>Selesai</span></a>";
+                            echo "<a href='#' type='button' class='btn btn-success btn-sm'><i class='fa-solid fa-arrow-up-right-from-square'></i><span class='mx-2'>Dokumentasi</span></a>";
                         }
                         echo '</td>';
             ?>
-            <td scope="col">Status</td>
+            <td scope="col"><?php 
+            
+            if ($data['file_desain'] == "" && $data['file_dokumentasi'] == "") {
+                echo '<span class="badge bg-danger text-light">Belum</span>';
+            } else if ($data['file_desain'] != "" && $data['file_dokumentasi'] == "") {
+                echo '<span class="badge bg-warning text-dark">Proses</span>';
+            } else if ($data['file_desain'] != "" && $data['file_dokumentasi'] != "") {
+                echo '<span class="badge bg-success text-light">Selesai</span>';
+            }
+
+            ?></td>
         <?php endforeach; ?>
     </tr>
     </table>
