@@ -36,25 +36,56 @@ if(isset($_POST['login'])){
         $inputTerenkripsi = hash('sha256', $saltKeamanan . $password);
 
         if($sandiTerenkripsi == $inputTerenkripsi){
-            $_SESSION['login'] = true;
 
             if(isset($_POST['remember'])){
                 setcookie('id', $row['id'], time() + 172800);
                 setcookie('key', hash('sha512', $row['username']), time() + 172800);
+
+                $_SESSION['login'] = true;
+
+                if($row['divisi'] == "sales" || $row['divisi'] == "marol" || $row['divisi'] == "admin"){
+                    header('location:list-antrian-sales.php');
+                    exit;
+                }
+                elseif($row['divisi'] == "desopr"){
+                    header('location:list-antrian-desopr.php');
+                    exit;
+                }
+                elseif($row['divisi'] == "admwrk"){
+                    header('location:list-antrian.php');
+                    exit;
+                }
+                else {
+                    header('location:list-antrian-free.php');
+                    exit;
+                }
+            }else{
+                $_SESSION['login'] = true;
+
+                if($row['divisi'] == "sales" || $row['divisi'] == "marol" || $row['divisi'] == "admin"){
+                    header('location:list-antrian-sales.php');
+                    exit;
+                }
+                elseif($row['divisi'] == "desopr"){
+                    header('location:list-antrian-desopr.php');
+                    exit;
+                }
+                elseif($row['divisi'] == "admwrk"){
+                    header('location:list-antrian.php');
+                    exit;
+                }
+                else {
+                    header('location:list-antrian-free.php');
+                    exit;
+                }
             }
-
-            header('location:list-antrian.php');
-            exit;
-        }   
-        else{
-           echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Kata sandi salah ! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
-
+        }else{
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Kata sandi salah ! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
         }
     }
     else {
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Username tidak ditemukan ! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
     }
-    
 }
 
 ?>

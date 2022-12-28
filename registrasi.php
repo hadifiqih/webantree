@@ -32,7 +32,7 @@ if(isset($_POST['register'])){
         $sql = "INSERT INTO data_user (username, kata_sandi, salt , nama, divisi) VALUES ('$username', '$sandiTerenkripsi', '$saltKeamanan' , '$namaLengkap', '$divisi')";
         $query = mysqli_query($connect,$sql);
 
-        echo '<div class="alert alert-success" role="alert">Registrasi berhasil, silahkan <a href="login.php" class="alert-link">klik disini</a> untuk login</div>"';
+        echo '<div class="alert alert-success" role="alert">Registrasi berhasil, silahkan <a href="login.php" class="alert-link">klik disini</a> untuk login</div>';
     }
 }
 
@@ -103,7 +103,7 @@ if(isset($_POST['register'])){
                                 <select id="divisi" name="divisi" class="form-select" aria-label="Default select example">
                                     <option selected>- Pilih Divisi -</option>
                                     <option value="sales">Sales</option>
-                                    <option value="admin">Admin</option>
+                                    <option value="admin">Admin Sales</option>
                                     <option value="desopr">Desain & Operator</option>
                                     <option value="admwrk">Admin Workshop</option>
                                     <option value="gudang">Gudang</option>
