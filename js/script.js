@@ -18,7 +18,3 @@ keyword.addEventListener('keyup', function() {
     xhr.open('GET', 'ajax/ajax_cari.php?keyword=' + keyword.value, true);
     xhr.send();
 });
-
-$(document).ready(function () {
-    $('myTable').DataTable();
-});

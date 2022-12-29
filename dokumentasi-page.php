@@ -69,7 +69,6 @@ if (isset($_POST['cariDokumentasi'])) {
             </div>
         </div>
     </div>
-
     <div class="container-fluid mt-3">
         <div class="row mx-1 mb-3 justify-content-center">
             <?php foreach ($sqlAntrian as $row) : ?>

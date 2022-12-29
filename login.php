@@ -16,6 +16,26 @@ if(isset($_COOKIE['id']) && isset($_COOKIE['key'])){
 }
 
 if(isset($_SESSION['login'])){
+    $result = mysqli_query($connect, "SELECT * FROM data_user WHERE username='$username'");
+    $row = mysqli_fetch_assoc($result);
+
+    if($row['divisi'] == "sales" || $row['divisi'] == "marol" || $row['divisi'] == "admin"){
+        header('location:list-antrian-sales.php');
+        exit;
+    }
+    elseif($row['divisi'] == "desopr"){
+        header('location:list-antrian-desopr.php');
+        exit;
+    }
+    elseif($row['divisi'] == "admwrk"){
+        header('location:list-antrian.php');
+        exit;
+    }
+    else {
+        header('location:list-antrian-free.php');
+        exit;
+    }
+
     header('location:list-antrian.php');
 }
 
@@ -29,7 +49,6 @@ if(isset($_POST['login'])){
     if(mysqli_num_rows($result) === 1){
         //cek password
         $row = mysqli_fetch_assoc($result);
-        // $checkpass = password_verify($password, $row['password']);
         $sandiTerenkripsi = $row['kata_sandi'];
         $saltKeamanan = $row['salt'];
 
@@ -62,16 +81,19 @@ if(isset($_POST['login'])){
             }else{
                 $_SESSION['login'] = true;
 
-                if($row['divisi'] == "sales" || $row['divisi'] == "marol" || $row['divisi'] == "admin"){
-                    header('location:list-antrian-sales.php');
+                if($row['divisi'] == "sales"){
+                    $_SESSION['divisi'] = "sales";
+                    header('location:sales.php');
                     exit;
                 }
                 elseif($row['divisi'] == "desopr"){
-                    header('location:list-antrian-desopr.php');
+                    $_SESSION['divisi'] = "desopr";
+                    header('location:desopr.php');
                     exit;
                 }
                 elseif($row['divisi'] == "admwrk"){
-                    header('location:list-antrian.php');
+                    $_SESSION['divisi'] = "admwrk";
+                    header('location:admin-workshop.php');
                     exit;
                 }
                 else {
