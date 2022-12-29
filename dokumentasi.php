@@ -25,17 +25,23 @@
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
-    <div class="swiper-slide">
-      <img src="dokumentasi/Wga.jpg" alt="Gambar 2" class="img-fluid">
-      <a href="dokumentasi/Wga.jpg" download="Wga.jpg" class="download-button">Download Gambar</a>
+    <div class="swiper-slide text-center">
+    <div class="m-3">
+      <img src="dokumentasi/Wga.jpg" alt="Gambar 2" class="img-fluid rounded">
+      <a href="dokumentasi/Wga.jpg" download="Wga.jpg" class="btn btn-sm btn-warning mt-3">Download Gambar</a>
+    </div>
     </div>
     <div class="swiper-slide text-center">
-      <img src="dokumentasi/1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" alt="Gambar 2" class="img-fluid">
-      <a href="dokumentasi/1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" download="1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" class="btn btn-sm btn-warning">Download Gambar</a>
+        <div class="m-3">
+        <img src="dokumentasi/1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" alt="Gambar 2" class="img-fluid rounded">
+        <a href="dokumentasi/1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" download="1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" class="btn btn-sm btn-warning mt-3">Download Gambar</a>
+        </div>
     </div>
-    <div class="swiper-slide">
-      <img src="dokumentasi/Wga.jpg" alt="Gambar 2" class="img-fluid">
-      <a href="dokumentasi/Wga.jpg" download="Wga.jpg" class="download-button">Download Gambar</a>
+    <div class="swiper-slide text-center">
+    <div class="m-3">
+      <img src="dokumentasi/Wga.jpg" alt="Gambar 2" class="img-fluid rounded">
+      <a href="dokumentasi/Wga.jpg" download="Wga.jpg" class="btn btn-sm btn-warning mt-3">Download Gambar</a>
+    </div>
     </div>
   </div>
 
