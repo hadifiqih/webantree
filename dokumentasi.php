@@ -18,20 +18,6 @@
             height: 100%;
             width: 100%;
         }
-        .download-button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 20px;
-
-
-}
-
     </style>
 </head>
 <body>
@@ -43,13 +29,13 @@
       <img src="dokumentasi/Wga.jpg" alt="Gambar 2" class="img-fluid">
       <a href="dokumentasi/Wga.jpg" download="Wga.jpg" class="download-button">Download Gambar</a>
     </div>
-    <div class="swiper-slide">
+    <div class="swiper-slide text-center">
       <img src="dokumentasi/1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" alt="Gambar 2" class="img-fluid">
-      <a href="dokumentasi/1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" download="1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" class="download-button">Download Gambar</a>
+      <a href="dokumentasi/1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" download="1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" class="btn btn-sm btn-warning">Download Gambar</a>
     </div>
     <div class="swiper-slide">
-    <a href="dokumentasi/Wga.jpg" download="Wga.jpg" class="download-button">Download Gambar<img src="dokumentasi/Wga.jpg" alt="Gambar 2" class="img-fluid">
-      </a>
+      <img src="dokumentasi/Wga.jpg" alt="Gambar 2" class="img-fluid">
+      <a href="dokumentasi/Wga.jpg" download="Wga.jpg" class="download-button">Download Gambar</a>
     </div>
   </div>
 
