@@ -14,5 +14,9 @@ $divisi = $_SESSION['divisi'];
             header('location:desopr.php');
             exit;
         }
+    }else{
+        header('location:login.php');
+        exit;
     }
+
 ?>
