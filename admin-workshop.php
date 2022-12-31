@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Antree | Daftar Antrian</title>
+<?php
+    session_start();
+    if(!isset($_SESSION['login'])){
+        header('location:login.php');
+        exit;
+    }
+    // if(!isset($_SESSION['adminwrk'])){
+    //     echo "<script>
+    //             alert('Hanya dapat diakses oleh Admin Workshop!');
+    //             document.location.href = 'logout.php';
+    //           </script>";
+    //     exit;
+    // }
+?>
 
-    <!-- Menyertakan file CSS Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antree | Daftar Antrian</title>
 
     <!-- Menyertakan file CSS DataTables -->
     <link rel="stylesheet" href="css/datatables.min.css">
@@ -13,36 +27,35 @@
     <script src="https://kit.fontawesome.com/a49a4a7eca.js" crossorigin="anonymous"></script>
 
     <!-- CSS Bootstrap 5 CDN -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid position-relative">
-            <nav class="nav nav-pills nav-fill">
-                <a href="list-antrian.php"><img src="logo/antree-brand.png" alt="logo-antree" height="32px" class="pt-1 me-4 ms-3"></a>
-                <a class="nav-link text-warning" aria-current="page" href="#">Dashboard</a>
-                <a class="nav-link active bg-warning text-dark" href="admin-workshop.php">Antrian</a>
-                <a class="nav-link text-warning" href="#">Data Customer</a>
-                <a class="nav-link text-warning" href="dokumentasi-page.php" tabindex="-1"
-                    aria-disabled="true">Dokumentasi</a>
-                <div class="position-absolute top-50 end-0 translate-middle-y">
-                    <a href="logout.php" class="nav-link float-end text-warning"><i
-                            class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-                </div>
-            </nav>
-        </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="logo/antree-brand.png" alt="Antree Logo" width="100">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active">Antrian</a>
+        <a class="nav-link" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>
     <!-- End Navbar -->
 
     <!-- Container untuk tabel -->
-    <div class="container mt-5">
+    <div class="container mt-5 table-responsive">
         <h1>Daftar Antrian</h1>
         <!-- Button tambah antrian -->
-        <div class="" style="width: 100%;">
-        <button class="btn btn-sm btn-warning float-right mt-1 mb-4">+ Tambah Antrian</button>
-        </div>
-        <table id="usersTable" class="table table-striped table-bordered table-hover">
+        <a href="tambah-antrian.php" class="btn btn-sm btn-warning float-end ms-2">+ Tambah Antrian</a>
+
+        <table id="usersTable" class="table table-striped table-hover table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>#</th>
@@ -53,8 +66,6 @@
                     <th>Operator</th>
                     <th>Finishing</th>
                     <th>QC</th>
-                    <th>File Desain</th>
-                    <th>Dokumentasi</th>
                     <th>Opsi</th>
                 </tr>
             </thead>
@@ -79,23 +90,11 @@
                     echo '<td>' . $row['nama_operator'] . '</td>';
                     echo '<td>' . $row['nama_finishing'] . '</td>';
                     echo '<td>' . $row['nama_qc'] . '</td>';
-                    //Tombol File Desain
-                    if($row['file_desain'] == ""){
-                        echo '<td class="text-center"><a type="button" class="btn btn-secondary btn-sm" disabled><i class="fa-solid fa-xs fa-circle-arrow-down"></i> Belum</a></td>';
-                    }else{
-                        echo '<td class="text-center"><a type="button" class="btn btn-success btn-sm"><i class="fa-solid fa-xs fa-circle-arrow-down"></i> Siap</a></td>';
-                    }
-                    //Tombol Dokumentasi
-                    if($row['file_dokumentasi'] == ""){
-                        echo '<td class="text-center"><a type="button" class="btn btn-secondary btn-sm" disabled><i class="fa-regular fa-xs fa-circle-xmark"></i> Dokumentasi</a></td>';
-                    }else{
-                        echo '<td class="text-center"><a type="button" class="btn btn-success btn-sm"><i class="fa-xs fa-solid fa-arrow-up-right-from-square"></i> Dokumentasi</b></td>';
-                    }
                     //Tombol Opsi
                     echo '<td class="text-center">';
-                        echo '<div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-warning btn-sm">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm">Hapus</button>
+                        echo '<div class="btn-group" role="group" aria-label="Tombol Opsi">
+                        <a type="button" href="edit-antrian.php?no_antrian='.$row['no_antrian'].'" class="btn btn-warning btn-sm">Edit</a>
+                        <a type="button" href="delete-antrian.php?no_antrian='.$row['no_antrian'].'" class="btn btn-danger btn-sm">Hapus</a>
                       </div>';
                         echo '</td>';
                     echo '</tr>';
@@ -108,11 +107,7 @@
         </table>
     </div>
 
-    <!-- Menyertakan file JavaScript jQuery -->
-    <script src="js/jquery.min.js"></script>
-
-    <!-- Menyertakan file JavaScript Bootstrap -->
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
     <!-- Menyertakan file JavaScript DataTables -->
     <script src="js/datatables.min.js"></script>
@@ -120,7 +115,9 @@
     <!-- Inisialisasi plugin DataTables -->
     <script>
     $(document).ready(function() {
-        $('#usersTable').DataTable();
+        $('#usersTable').DataTable({
+            responsive:true,
+        });
     });
     </script>
 </body>

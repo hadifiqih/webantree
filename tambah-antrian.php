@@ -5,11 +5,6 @@ session_start();
 if(!isset($_SESSION['login'])){
     header('location:login.php');
     exit;
-}else{
-    if($_SESSION['divisi'] !== 'sales'){
-        header('location:login.php');
-        exit;
-    }
 }
 
 include('connection.php');
@@ -24,7 +19,6 @@ $queryOperator = mysqli_query($connect, $sqlOperator);
 $queryDesainer = mysqli_query($connect, $sqlDesainer);
 $queryFinishing = mysqli_query($connect, $sqlOperator);
 $queryProduk = mysqli_query($connect, $sqlProduk);
-
 
 ?>
 

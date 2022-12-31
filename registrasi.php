@@ -2,9 +2,19 @@
 
 session_start();
 
-if (isset($_SESSION['login'])) {
-    header('location:list-antrian.php');
-    exit;
+if(isset($_SESSION['login'])){
+    if($_SESSION['divisiSales']){
+        header('location:sales.php');
+    }
+    elseif($_SESSION['divisiDesopr']){
+        header('location:desopr.php');
+    }
+    elseif($_SESSION['divisiAdminwrk']){
+        header('location:admin-workshop.php');
+    }
+    else {
+        header('location:login.php');
+    }
 }
 
 require 'connection.php';
@@ -66,7 +76,7 @@ if(isset($_POST['register'])){
                             <form action="" method="POST" class="needs-validation" autocomplete="off" novalidate>
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="name">Username</label>
-                                    <input id="name" type="text" class="form-control" name="username" value="" required
+                                    <input id="name" type="text" class="form-control" name="username" placeholder="(Huruf kecil, tanpa spasi dan tanda baca)" value="" required
                                         autofocus>
                                     <div class="invalid-feedback">
                                         Username is required
@@ -75,7 +85,7 @@ if(isset($_POST['register'])){
 
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="namaUser">Nama Lengkap</label>
-                                    <input id="namaUser" type="text" class="form-control" name="namaUser" value="" required
+                                    <input id="namaUser" type="text" class="form-control" placeholder="Yayan Gonzales" name="namaUser" value="" required
                                         autofocus>
                                     <div class="invalid-feedback">
                                         Name is required
@@ -84,7 +94,7 @@ if(isset($_POST['register'])){
 
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="password">Kata Sandi</label>
-                                    <input id="password" type="password" class="form-control" name="password" required>
+                                    <input id="password" type="password" class="form-control" placeholder="Minimal 6 karakter" name="password" required>
                                     <div class="invalid-feedback">
                                         Password is required
                                     </div>

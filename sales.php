@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
     <title>Antree | Daftar Antrian</title>
 
     <!-- Menyertakan file CSS Bootstrap -->
@@ -20,31 +19,30 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid position-relative">
-            <nav class="nav nav-pills nav-fill">
-                <a href="list-antrian.php"><img src="logo/antree-brand.png" alt="logo-antree" height="32px" class="pt-1 me-4 ms-3"></a>
-                <a class="nav-link text-warning" aria-current="page" href="#">Dashboard</a>
-                <a class="nav-link active bg-warning text-dark" href="list-antrian.php">Antrian</a>
-                <a class="nav-link text-warning" href="#">Data Customer</a>
-                <a class="nav-link text-warning" href="dokumentasi-page.php" tabindex="-1"
-                    aria-disabled="true">Dokumentasi</a>
-                <div class="position-absolute top-50 end-0 translate-middle-y">
-                    <a href="logout.php" class="nav-link float-end text-warning"><i
-                            class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-                </div>
-            </nav>
-        </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="logo/antree-brand.png" alt="Antree Logo" width="100">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" href="#">Antrian</a>
+        <a class="nav-link" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>
     <!-- End Navbar -->
 
     <!-- Container untuk tabel -->
-    <div class="container mt-5">
+    <div class="container mt-5 table-responsive">
         <h1>Daftar Antrian</h1>
         <!-- Button tambah antrian -->
-        <div class="" style="width: 100%;">
-        <a class="btn btn-sm btn-warning float-right mt-1 mb-4" href="tambah-antrian.php">+ Tambah Antrian</a>
-        </div>
+        <a href="tambah-antrian.php" class="btn btn-sm btn-warning float-end ms-2">+ Tambah Antrian</a>
+        
         <table id="usersTable" class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -84,7 +82,7 @@
                     if($row['file_dokumentasi'] == ""){
                         echo '<td class="text-center"><button type="button" class="btn btn-secondary btn-sm" disabled><i class="fa-regular fa-xs fa-circle-xmark"></i> Dokumentasi</button></td>';
                     }else{
-                        echo '<td class="text-center"><a type="button" class="btn btn-success btn-sm"><i class="fa-xs fa-solid fa-arrow-up-right-from-square"></i> Dokumentasi</a></td>';
+                      echo '<td class="text-center"><a href="dokumentasi.php?no_antrian='. $row['no_antrian'].'" type="button" class="btn btn-success btn-sm"><i class="fa-xs fa-solid fa-arrow-up-right-from-square"></i> Dokumentasi</a></td>';
                     }
                     echo '</tr>';
                 }
@@ -95,50 +93,6 @@
             </tbody>
         </table>
     </div>
-
-<!-- Button trigger modal -->
-<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#iniModal">
-  Open Modal
-</a>
-
-<!-- Modal -->
-<div class="modal fade" id="iniModal" tabindex="-1" role="dialog" aria-labelledby="iniModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="iniModalLabel">Modal Title</h5>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-      <div class="modal-body">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="dokumentasi/1679091c5a880faf6fb5e6087eb1b2dc-stempel spunbound.jpeg" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="carousel-item">
-              <img src="dokumentasi/6512bd43d9caa6e02c990b0a82652dca-karnopel kotak regular.jpg" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="carousel-item">
-              <img src="dokumentasi/Wga.jpg" class="img-fluid" alt="Responsive image">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>    
 

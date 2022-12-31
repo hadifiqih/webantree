@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require 'connection.php';
 
@@ -16,100 +15,42 @@ if(isset($_COOKIE['id']) && isset($_COOKIE['key'])){
 }
 
 if(isset($_SESSION['login'])){
-    $result = mysqli_query($connect, "SELECT * FROM data_user WHERE username='$username'");
-    $row = mysqli_fetch_assoc($result);
-
-    if($row['divisi'] == "sales" || $row['divisi'] == "marol" || $row['divisi'] == "admin"){
-        header('location:list-antrian-sales.php');
+    if(isset($_SESSION['admwrk'])){
+        header('Location:admin-workshop.php');
         exit;
     }
-    elseif($row['divisi'] == "desopr"){
-        header('location:list-antrian-desopr.php');
-        exit;
-    }
-    elseif($row['divisi'] == "admwrk"){
-        header('location:list-antrian.php');
-        exit;
-    }
-    else {
-        header('location:list-antrian-free.php');
-        exit;
-    }
-
-    header('location:list-antrian.php');
 }
 
-if(isset($_POST['login'])){
-
+if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
     $result = mysqli_query($connect, "SELECT * FROM data_user WHERE username='$username'");
 
-    if(mysqli_num_rows($result) === 1){
-        //cek password
+    if (mysqli_num_rows($result) === 1) {
+        //Cek password
         $row = mysqli_fetch_assoc($result);
         $sandiTerenkripsi = $row['kata_sandi'];
         $saltKeamanan = $row['salt'];
 
+        //Memasang Cookie
+        if (isset($_POST['remember'])) {
+            setcookie('id', $row['id'], time() + (60*60*24*2));
+            setcookie('key', hash('sha512', $row['username']), time() + (60*60*24*2));
+        }
+
+        $_SESSION['login'] = true;
+        $_SESSION['divisi'] = $row['divisi'];
+
         $inputTerenkripsi = hash('sha256', $saltKeamanan . $password);
 
-        if($sandiTerenkripsi == $inputTerenkripsi){
-
-            if(isset($_POST['remember'])){
-                setcookie('id', $row['id'], time() + 172800);
-                setcookie('key', hash('sha512', $row['username']), time() + 172800);
-
-                $_SESSION['login'] = true;
-
-                if($row['divisi'] == "sales" || $row['divisi'] == "marol" || $row['divisi'] == "admin"){
-                    header('location:list-antrian-sales.php');
-                    exit;
-                }
-                elseif($row['divisi'] == "desopr"){
-                    header('location:list-antrian-desopr.php');
-                    exit;
-                }
-                elseif($row['divisi'] == "admwrk"){
-                    header('location:list-antrian.php');
-                    exit;
-                }
-                else {
-                    header('location:list-antrian-free.php');
-                    exit;
-                }
-            }else{
-                $_SESSION['login'] = true;
-
-                if($row['divisi'] == "sales"){
-                    $_SESSION['divisi'] = "sales";
-                    header('location:sales.php');
-                    exit;
-                }
-                elseif($row['divisi'] == "desopr"){
-                    $_SESSION['divisi'] = "desopr";
-                    header('location:desopr.php');
-                    exit;
-                }
-                elseif($row['divisi'] == "admwrk"){
-                    $_SESSION['divisi'] = "admwrk";
-                    header('location:admin-workshop.php');
-                    exit;
-                }
-                else {
-                    header('location:list-antrian-free.php');
-                    exit;
-                }
-            }
-        }else{
-            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Kata sandi salah ! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+        if ($sandiTerenkripsi == $inputTerenkripsi) {
+            header('location:index.php');
+            exit;
         }
     }
-    else {
-        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Username tidak ditemukan ! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
-    }
+    $error = true;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -126,6 +67,11 @@ if(isset($_POST['login'])){
 </head>
 
 <body>
+    <?php if(isset($error)):?>
+    <div class="alert alert-danger" role="alert">
+        Maaf, Username / Kata sandi tidak benar!
+    </div>
+    <?php endif; ?>
     <section class="h-100">
         <div class="container h-100">
             <div class="row justify-content-sm-center h-100">
@@ -136,11 +82,6 @@ if(isset($_POST['login'])){
                     <div class="card shadow-lg">
                         <div class="card-body p-5">
                             <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
-                            <?php if (isset($error)) :?>
-                                <div class="alert alert-danger" role="alert">
-                                    Username / password salah !
-                                </div>
-                            <?php endif; ?>
                             <form method="POST" class="needs-validation" novalidate="" autocomplete="off">
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="email">Username</label>

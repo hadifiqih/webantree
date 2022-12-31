@@ -105,13 +105,11 @@ if (mysqli_num_rows($query) < 1) {
                 <br>
 
                 <label for="startJob">Mulai</label>
-                <input class="form-control" type="datetime" name="startJob"
-                    value="<?php echo $dataEdit['mulai_kerja']; ?>">
+                <input class="form-control" type="datetime-local" name="startJob" id="startJob" value="<?= $dataEdit['mulai_kerja']; ?>">
                 <br>
 
                 <label for="finishJob">Selesai</label>
-                <input class="form-control" type="datetime" name="finishJob"
-                    value="<?php echo $dataEdit['selesai_kerja']; ?>">
+                <input class="form-control" type="datetime-local" name="finishJob" id="finishJob" value="<?= $dataEdit['selesai_kerja']; ?>">
                 <br>
 
                 <div class="radio">

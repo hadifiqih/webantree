@@ -14,27 +14,26 @@
 
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid position-relative">
-            <nav class="nav nav-pills nav-fill">
-                <a href="list-antrian.php"><img src="logo/antree-brand.png" alt="logo-antree" height="32px" class="pt-1 me-4 ms-3"></a>
-                <a class="nav-link text-warning" aria-current="page" href="#">Dashboard</a>
-                <a class="nav-link active bg-warning text-dark" href="admin-workshop.php">Antrian</a>
-                <a class="nav-link text-warning" href="#">Data Customer</a>
-                <a class="nav-link text-warning" href="dokumentasi-page.php" tabindex="-1"
-                    aria-disabled="true">Dokumentasi</a>
-                <div class="position-absolute top-50 end-0 translate-middle-y">
-                    <a href="logout.php" class="nav-link float-end text-warning"><i
-                            class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-                </div>
-            </nav>
+   <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="login.php">
+        <img src="logo/antree-brand.png" alt="Antree Logo" width="100">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="#">Antrian</a>
+          <a class="nav-link" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
     <!-- End Navbar -->
-
     <!-- Container untuk tabel -->
-    <div class="container mt-5">
+    <div class="container mt-5 table-responsive">
         <h1>Daftar Antrian</h1>
         <table id="usersTable" class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
@@ -80,9 +79,9 @@
                     }
                     //Tombol Dokumentasi
                     if($row['file_dokumentasi'] == ""){
-                        echo '<td class="text-center"><a href="upload-dokumentasi.php?no_antrian='.$row['no_antrian'].'" type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-arrow-up"></i> Unggah</a></td>';
+                        echo '<td class="text-center"><a href="upload-dokumentasi.php?no_antrian='.$row['no_antrian'].'" type="button" class="btn btn-danger btn-sm"><i class="fa-xs fa-solid fa-arrow-up"></i> Unggah</a></td>';
                     }else{
-                        echo '<td class="text-center"><a href="#" type="button" class="btn btn-success btn-sm"><i class="fa-xs fa-solid fa-arrow-up-right-from-square"></i> Lihat</a></td>';
+                        echo '<td class="text-center"><a href="dokumentasi.php?no_antrian='.$row['no_antrian'].'" type="button" class="btn btn-success btn-sm"><i class="fa-xs fa-solid fa-arrow-up-right-from-square"></i> Lihat</a></td>';
                     }
                     echo '</tr>';
                 }
