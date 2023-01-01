@@ -54,6 +54,7 @@
                     <th>Operator</th>
                     <th>Finishing</th>
                     <th>QC</th>
+                    <th>Omset</th>
                     <th>Dokumentasi</th>
                 </tr>
             </thead>
@@ -78,6 +79,7 @@
                     echo '<td>' . $row['nama_operator'] . '</td>';
                     echo '<td>' . $row['nama_finishing'] . '</td>';
                     echo '<td>' . $row['nama_qc'] . '</td>';
+                    echo '<td>'. number_format($row['omset'], 0 , "," , ".") .'</td>';
                     //Tombol Dokumentasi
                     if($row['file_dokumentasi'] == ""){
                         echo '<td class="text-center"><button type="button" class="btn btn-secondary btn-sm" disabled><i class="fa-regular fa-xs fa-circle-xmark"></i> Dokumentasi</button></td>';

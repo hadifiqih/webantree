@@ -32,7 +32,7 @@
   </nav>
     <!-- End Navbar -->
     <!-- Container untuk tabel -->
-    <div class="container mt-5">
+    <div class="container my-3">
         <h1 class="text-center">Daftar Antrian Sales</h1>
         <br>
         <table id="usersTable" class="table table-striped table-bordered table-hover">
