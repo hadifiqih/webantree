@@ -35,7 +35,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active">Antrian</a>
-        <a class="nav-link" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+        <a class="nav-link" href="logout.php"><i class="fa fa-sign-out"></i> Logout</a>
       </div>
     </div>
   </div>
@@ -45,6 +45,7 @@
     <!-- Container untuk tabel -->
     <div class="container mt-5">
         <h1 class="text-center">Daftar Antrian Admin Workshop</h1>
+        <br>
         <!-- Button tambah antrian -->
         <a href="tambah-antrian.php" class="btn btn-sm btn-warning float-end ms-2">+ Tambah Antrian</a>
     
