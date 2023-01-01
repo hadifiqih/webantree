@@ -4,13 +4,6 @@
         header('location:login.php');
         exit;
     }
-    // if(!isset($_SESSION['adminwrk'])){
-    //     echo "<script>
-    //             alert('Hanya dapat diakses oleh Admin Workshop!');
-    //             document.location.href = 'logout.php';
-    //           </script>";
-    //     exit;
-    // }
 ?>
 
 <!DOCTYPE html>
@@ -51,9 +44,10 @@
 
     <!-- Container untuk tabel -->
     <div class="container mt-5">
-        <h1>Daftar Antrian</h1>
+        <h1 class="text-center">Daftar Antrian Admin Workshop</h1>
         <!-- Button tambah antrian -->
         <a href="tambah-antrian.php" class="btn btn-sm btn-warning float-end ms-2">+ Tambah Antrian</a>
+    
 
         <table id="usersTable" class="table table-striped table-hover table-bordered">
             <thead class="thead-dark">
