@@ -38,7 +38,7 @@
     <!-- End Navbar -->
 
     <!-- Container untuk tabel -->
-    <div class="container mt-5">
+    <div class="container my-3">
         <h1>Daftar Antrian</h1>
         <!-- Button tambah antrian -->
         <a href="tambah-antrian.php" class="btn btn-sm btn-warning float-end ms-2">+ Tambah Antrian</a>
