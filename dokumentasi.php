@@ -1,3 +1,11 @@
+<?php
+  session_start();
+
+  include('connection.php');
+
+  $divisi = $_SESSION['divisi'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +38,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active" href="#">Antrian</a>
+          <?php if($divisi == "sales"){
+            echo '<a class="nav-link active" href="sales.php">Antrian</a>';
+          }elseif($divisi == "desopr"){
+            echo '<a class="nav-link active" href="desopr.php">Antrian</a>';
+          }elseif($divisi == "admwrk"){
+            echo '<a class="nav-link active" href="admwrk.php">Antrian</a>';
+          }
+          ?>
           <a class="nav-link" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
         </div>
       </div>
@@ -42,7 +57,6 @@
   <div class="swiper-wrapper">
     <!-- Slides -->
     <?php
-    include('connection.php');
     $id = $_GET['no_antrian'];
     $query = mysqli_query($connect, "SELECT * FROM data_antrian WHERE no_antrian=$id");
     $row = mysqli_fetch_assoc($query);
