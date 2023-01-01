@@ -38,7 +38,7 @@
     <!-- End Navbar -->
 
     <!-- Container untuk tabel -->
-    <div class="container mt-5 table-responsive">
+    <div class="container mt-5">
         <h1>Daftar Antrian</h1>
         <!-- Button tambah antrian -->
         <a href="tambah-antrian.php" class="btn btn-sm btn-warning float-end ms-2">+ Tambah Antrian</a>
@@ -108,7 +108,10 @@
     <!-- Inisialisasi plugin DataTables -->
     <script>
     $(document).ready(function() {
-        $('#usersTable').DataTable();
+        $('#usersTable').DataTable({
+          responsive:true,
+          scrollX:true
+        });
     });
     </script>
     <script>

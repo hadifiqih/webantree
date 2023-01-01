@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antree | Daftar Antrian</title>
 
-    <!-- Menyertakan file CSS Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- Menyertakan file CSS DataTables -->
-    <link rel="stylesheet" href="css/datatables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
 
     <!-- file Font Awesome -->
     <script src="https://kit.fontawesome.com/a49a4a7eca.js" crossorigin="anonymous"></script>
@@ -16,7 +15,7 @@
 <body>
    <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="login.php">
         <img src="logo/antree-brand.png" alt="Antree Logo" width="100">
       </a>
@@ -33,8 +32,9 @@
   </nav>
     <!-- End Navbar -->
     <!-- Container untuk tabel -->
-    <div class="container mt-5 table-responsive">
-        <h1>Daftar Antrian</h1>
+    <div class="container mt-5">
+        <h1 class="text-center">Daftar Antrian Sales</h1>
+        <br>
         <table id="usersTable" class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -92,20 +92,18 @@
             </tbody>
         </table>
     </div>
-
-    <!-- Menyertakan file JavaScript jQuery -->
-    <script src="js/jquery.min.js"></script>
-
-    <!-- Menyertakan file JavaScript Bootstrap -->
-    <script src="js/bootstrap.bundle.min.js"></script>
-
-    <!-- Menyertakan file JavaScript DataTables -->
-    <script src="js/datatables.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 
     <!-- Inisialisasi plugin DataTables -->
     <script>
     $(document).ready(function() {
-        $('#usersTable').DataTable();
+        $('#usersTable').DataTable({
+          responsive:true,
+          scrollX:true
+        });
     });
     </script>
 </body>
