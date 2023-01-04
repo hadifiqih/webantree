@@ -67,9 +67,9 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                // Koneksi ke database
-                    include('connection.php');
+    <?php
+    // Koneksi ke database
+    include('connection.php');
 
     // Query untuk mengambil semua data dari tabel 'users'
     $query = "SELECT * FROM data_antrian";

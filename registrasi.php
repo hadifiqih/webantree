@@ -2,29 +2,26 @@
 
 session_start();
 
-if(isset($_SESSION['login'])){
-    if($_SESSION['divisiSales']){
+if (isset($_SESSION['login'])) {
+    if ($_SESSION['divisiSales']) {
         header('location:sales.php');
-    }
-    elseif($_SESSION['divisiDesopr']){
+    } elseif ($_SESSION['divisiDesopr']) {
         header('location:desopr.php');
-    }
-    elseif($_SESSION['divisiAdminwrk']){
+    } elseif ($_SESSION['divisiAdminwrk']) {
         header('location:admin-workshop.php');
-    }
-    else {
+    } else {
         header('location:login.php');
     }
 }
 
 require 'connection.php';
 
-if(isset($_POST['register'])){
-
+if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $namaLengkap = $_POST['namaUser'];
     $kataSandi = $_POST['password'];
     $divisi = $_POST['divisi'];
+    $namaKecil = $_POST['namaKecil'];
 
     //Enkripsi Password
     $saltKeamanan = bin2hex(random_bytes(32));
@@ -32,15 +29,14 @@ if(isset($_POST['register'])){
 
     //select username terdaftar
     $sql = "SELECT * FROM data_user WHERE username='$username'";
-    $query = mysqli_query($connect,$sql);
+    $query = mysqli_query($connect, $sql);
     // cek username terdaftar
-    if(mysqli_num_rows($query) > 0){
+    if (mysqli_num_rows($query) > 0) {
         echo '<div class="alert alert-danger" role="alert">Username sudah terdaftar, gunakan username lain !</div>"';
-    }
-    else {
+    } else {
         //Jika username aman, Menyimpan ke database
-        $sql = "INSERT INTO data_user (username, kata_sandi, salt , nama, divisi) VALUES ('$username', '$sandiTerenkripsi', '$saltKeamanan' , '$namaLengkap', '$divisi')";
-        $query = mysqli_query($connect,$sql);
+        $sql = "INSERT INTO data_user (username, kata_sandi, salt , nama, nama_kecil, divisi) VALUES ('$username', '$sandiTerenkripsi', '$saltKeamanan' , '$namaLengkap', '$namaKecil', '$divisi')";
+        $query = mysqli_query($connect, $sql);
 
         echo '<div class="alert alert-success" role="alert">Registrasi berhasil, silahkan <a href="login.php" class="alert-link">klik disini</a> untuk login</div>';
     }
@@ -85,10 +81,19 @@ if(isset($_POST['register'])){
 
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="namaUser">Nama Lengkap</label>
-                                    <input id="namaUser" type="text" class="form-control" placeholder="Yayan Gonzales" name="namaUser" value="" required
+                                    <input id="namaUser" type="text" class="form-control" placeholder="Rizqi Imam Prayoga" name="namaUser" value="" required
                                         autofocus>
                                     <div class="invalid-feedback">
                                         Name is required
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="mb-2 text-muted" for="namaKecil">Nama Panggilan</label>
+                                    <input id="namaKecil" type="text" class="form-control" placeholder="Imam" name="namaKecil" value="" required
+                                        autofocus>
+                                    <div class="invalid-feedback">
+                                        Nickname is required
                                     </div>
                                 </div>
 
@@ -118,6 +123,7 @@ if(isset($_POST['register'])){
                                     <option value="admwrk">Admin Workshop</option>
                                     <option value="gudang">Gudang</option>
                                     <option value="marol">Marketing Online</option>
+                                    <option value="dokumentasi">Dokumentasi</option>
                                 </select>
                                 </div>
 
