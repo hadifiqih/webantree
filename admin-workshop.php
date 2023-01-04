@@ -1,10 +1,11 @@
 <?php
     session_start();
-    if(!isset($_SESSION['login'])){
+    if (!isset($_SESSION['login'])) {
         header('location:login.php');
         exit;
     }
-?>
+    include("connection.php");
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,43 +62,44 @@
                     <th>Operator</th>
                     <th>Finishing</th>
                     <th>QC</th>
+                    <th>Omset</th>
                     <th>Opsi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 // Koneksi ke database
-                include('connection.php');
+                    include('connection.php');
 
-                // Query untuk mengambil semua data dari tabel 'users'
-                $query = "SELECT * FROM data_antrian";
-
-                // Menjalankan query dan menyimpan hasilnya dalam variabel $result
-                $result = mysqli_query($connect, $query);
-                // Menampilkan data dari database di tabel
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<tr>';
-                    echo '<td>' . $row['no_antrian'] . '</td>';
-                    echo '<td>' . $row['keyword_stempel'] . '</td>';
-                    echo '<td>' . $row['nama_pekerjaan'] . '</td>';
-                    echo '<td>' . $row['selesai_kerja'] . '</td>';
-                    echo '<td>' . $row['nama_desainer'] . '</td>';
-                    echo '<td>' . $row['nama_operator'] . '</td>';
-                    echo '<td>' . $row['nama_finishing'] . '</td>';
-                    echo '<td>' . $row['nama_qc'] . '</td>';
-                    //Tombol Opsi
-                    echo '<td class="text-center">';
-                        echo '<div class="btn-group" role="group" aria-label="Tombol Opsi">
+    // Query untuk mengambil semua data dari tabel 'users'
+    $query = "SELECT * FROM data_antrian";
+    // Menjalankan query dan menyimpan hasilnya dalam variabel $result
+    $result = mysqli_query($connect, $query);
+    // Menampilkan data dari database di tabel
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<tr>';
+        echo '<td>' . $row['no_antrian'] . '</td>';
+        echo '<td>' . $row['keyword_stempel'] . '</td>';
+        echo '<td>' . $row['nama_pekerjaan'] . '</td>';
+        echo '<td>' . $row['selesai_kerja'] . '</td>';
+        echo '<td>' . $row['nama_desainer'] . '</td>';
+        echo '<td>' . $row['nama_operator'] . '</td>';
+        echo '<td>' . $row['nama_finishing'] . '</td>';
+        echo '<td>' . $row['nama_qc'] . '</td>';
+        echo '<td>' . $row['omset'] . '</td>';
+        //Tombol Opsi
+        echo '<td class="text-center">';
+        echo '<div class="btn-group" role="group" aria-label="Tombol Opsi">
                         <a type="button" href="edit-antrian.php?no_antrian='.$row['no_antrian'].'" class="btn btn-warning btn-sm">Edit</a>
                         <a type="button" href="delete-antrian.php?no_antrian='.$row['no_antrian'].'" class="btn btn-danger btn-sm">Hapus</a>
                       </div>';
-                        echo '</td>';
-                    echo '</tr>';
-                }
+        echo '</td>';
+        echo '</tr>';
+    }
 
-                // Menutup koneksi ke database
-                mysqli_close($connect);
-                ?>
+    // Menutup koneksi ke database
+    mysqli_close($connect);
+    ?>
             </tbody>
         </table>
     </div>
