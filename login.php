@@ -2,20 +2,20 @@
 session_start();
 require 'connection.php';
 
-if(isset($_COOKIE['id']) && isset($_COOKIE['key'])){
+if(isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
     $id = $_COOKIE['id'];
     $key = $_COOKIE['key'];
 
     $result = mysqli_query($connect, "SELECT * FROM data_user WHERE id='$id'");
     $row = mysqli_fetch_assoc($result);
 
-    if($key === hash('sha512', $row['username'])){
+    if($key === hash('sha512', $row['username'])) {
         $_SESSION['login'] = true;
     }
 }
 
-if(isset($_SESSION['login'])){
-    if(isset($_SESSION['admwrk'])){
+if(isset($_SESSION['login'])) {
+    if(isset($_SESSION['admwrk'])) {
         header('Location:admin-workshop.php');
         exit;
     }
@@ -41,6 +41,11 @@ if (isset($_POST['login'])) {
 
         $_SESSION['login'] = true;
         $_SESSION['divisi'] = $row['divisi'];
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['nama'] = $row['nama'];
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['namaKecil'] = $row['nama_kecil'];
+
 
         $inputTerenkripsi = hash('sha256', $saltKeamanan . $password);
 

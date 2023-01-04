@@ -2,7 +2,7 @@
 
 session_start();
 
-if(!isset($_SESSION['login'])){
+if (!isset($_SESSION['login'])) {
     header('location:login.php');
     exit;
 }
@@ -10,6 +10,10 @@ if(!isset($_SESSION['login'])){
 include('connection.php');
 
 $id = $_GET['no_antrian'];
+$divisi = $_SESSION['divisi'];
+$nama = $_SESSION['nama'];
+$namaKecil = $_SESSION['namaKecil'];
+
 $sql = "SELECT file_desain FROM data_antrian WHERE no_antrian='$id'";
 $query = mysqli_query($connect, $sql);
 
@@ -54,6 +58,7 @@ if (mysqli_num_rows($query) < 0) {
                             (Maks.
                             20Mb)</p>
                         <br>
+                        <input name="namaKecil" type="hidden" value="<?php echo $namaKecil; ?>">
                         <input name="submitFile" type="submit" class="btn btn-warning" value="Unggah File">
                         <p></p>
                     </form>
