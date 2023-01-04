@@ -34,23 +34,19 @@ for ($i = 0; $i < $jumlahFile; $i++) {
     # jika proses berhasil
     if ($prosesUpload) {
         echo "file berhasil di upload";
-
     } else {
         echo "<span style='color: red'>Upload file {$namaFile} gagal</span> <br>";
     }
-
 }
-    $namaToString = implode(', ', $namaToDB);
-    
-    $sql = "UPDATE data_antrian SET file_dokumentasi='$namaToString' WHERE no_antrian='$id'";
+$namaToString = implode(', ', $namaToDB);
 
-    mysqli_query($connect,$sql);
+$sql = "UPDATE data_antrian SET file_dokumentasi='$namaToString' WHERE no_antrian='$id'";
 
-    if(mysqli_query($connect,$sql)){
-        echo "berhasil mengisi di database";
-    }
-    else{
-        echo "tidak berhasil menyimpan ke DB";
-    }
+mysqli_query($connect, $sql);
 
-?>
+if (mysqli_query($connect, $sql)) {
+    echo "berhasil mengisi di database";
+    header('location: index.php');
+} else {
+    echo "tidak berhasil menyimpan ke DB";
+}

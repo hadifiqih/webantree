@@ -72,7 +72,7 @@ if (isset($_POST['register'])) {
                             <form action="" method="POST" class="needs-validation" autocomplete="off" novalidate>
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="name">Username</label>
-                                    <input id="name" type="text" class="form-control" name="username" placeholder="(Huruf kecil, tanpa spasi dan tanda baca)" value="" required
+                                    <input id="name" type="text" class="form-control" name="username" placeholder="Contoh: adipratama" value="" required
                                         autofocus>
                                     <div class="invalid-feedback">
                                         Username is required
@@ -81,7 +81,7 @@ if (isset($_POST['register'])) {
 
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="namaUser">Nama Lengkap</label>
-                                    <input id="namaUser" type="text" class="form-control" placeholder="Rizqi Imam Prayoga" name="namaUser" value="" required
+                                    <input id="namaUser" type="text" class="form-control" placeholder="Contoh: Adi Pratama" name="namaUser" value="" required
                                         autofocus>
                                     <div class="invalid-feedback">
                                         Name is required
@@ -90,7 +90,7 @@ if (isset($_POST['register'])) {
 
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="namaKecil">Nama Panggilan</label>
-                                    <input id="namaKecil" type="text" class="form-control" placeholder="Imam" name="namaKecil" value="" required
+                                    <input id="namaKecil" type="text" class="form-control" placeholder="Contoh: Adi" name="namaKecil" value="" required
                                         autofocus>
                                     <div class="invalid-feedback">
                                         Nickname is required

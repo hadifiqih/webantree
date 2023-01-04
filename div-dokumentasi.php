@@ -39,7 +39,8 @@
 
     <!-- Container untuk tabel -->
     <div class="container my-3">
-        <h1>Daftar Antrian</h1>
+        <h1 class="text-center">Daftar Antrian</h1>
+        <br>
         
         <table id="usersTable" class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
@@ -80,7 +81,7 @@
                     echo '<td>'. number_format($row['omset'], 0, ",", ".") .'</td>';
                     //Tombol Dokumentasi
                     if ($row['file_dokumentasi'] == "") {
-                        echo '<td class="text-center"><button type="button" class="btn btn-secondary btn-sm" disabled><i class="fa-solid fa-arrow-up-from-bracket"></i> Dokumentasi</button></td>';
+                        echo '<td class="text-center"><a href="upload-dokumentasi.php?no_antrian='. $row['no_antrian'].'" type="button" class="btn btn-danger btn-sm"><i class="fa-xs fa-solid fa-arrow-up-from-bracket"></i> Dokumentasi</a></td>';
                     } else {
                         echo '<td class="text-center"><a href="dokumentasi.php?no_antrian='. $row['no_antrian'].'" type="button" class="btn btn-success btn-sm"><i class="fa-xs fa-solid fa-arrow-up-right-from-square"></i> Dokumentasi</a></td>';
                     }

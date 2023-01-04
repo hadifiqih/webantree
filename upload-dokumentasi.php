@@ -7,11 +7,6 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
-if (!isset($_GET['no_antrian'])) {
-    header('location:list-antrian.php');
-    exit;
-}
-
 include('connection.php');
 
 $id = $_GET['no_antrian'];
