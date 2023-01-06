@@ -2,15 +2,14 @@
 
 session_start();
 
-if(!isset($_SESSION['login'])){
+if (!isset($_SESSION['login'])) {
     header('location:login.php');
     exit;
 }
 
 include("connection.php");
 
-if( isset($_GET['no_antrian']) ){
-
+if (isset($_GET['no_antrian'])) {
     // ambil id dari query string
     $id = $_GET['no_antrian'];
 
@@ -19,14 +18,11 @@ if( isset($_GET['no_antrian']) ){
     $query = mysqli_query($connect, $sql);
 
     // apakah query hapus berhasil?
-    if( $query ){
-        header('Location: list-antrian.php');
+    if ($query) {
+        header('Location: index.php');
     } else {
         die("gagal menghapus...");
     }
-
 } else {
     die("akses dilarang...");
 }
-
-?>
