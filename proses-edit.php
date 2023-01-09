@@ -2,7 +2,7 @@
 
 session_start();
 
-if(!isset($_SESSION['login'])){
+if (!isset($_SESSION['login'])) {
     header('location:login.php');
     exit;
 }
@@ -29,7 +29,7 @@ $tanggal = $_POST['tanggal'];
 $query = mysqli_query($connect, "UPDATE data_antrian SET tanggal_antrian='$tanggal', nama_sales='$sales', keyword_stempel='$keyword', nama_pekerjaan='$pekerjaan', mulai_kerja='$mulai', selesai_kerja='$selesai', tempat_workshop='$workshop', nama_desainer='$desainer', nama_operator='$operator', nama_finishing='$finishing', nama_qc='$qc' WHERE no_antrian='$id'");
 
 if ($query) {
-    header('location:list-antrian.php?pesan=edited');
+    header('location:index.php');
 } else {
-    header('location:list-antrian.php?pesan=notedited');
+    header('location:index.php');
 }

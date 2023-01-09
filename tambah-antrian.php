@@ -74,10 +74,6 @@ echo "<br>";
                         </select>
                         <br>
 
-                        <label for="gambarDesain">Gambar Desain</label>
-                        <input class="form-control" type="file" name="gambarDesain">
-                        <br>
-
                         <label for="keywordStamp">Nama Stempel / Kata Kunci</label>
                         <input class="form-control" type="text" placeholder="Contoh : Mami Juice" name="keywordStamp">
                         <br>
@@ -101,6 +97,10 @@ while ($resultProduk = mysqli_fetch_array($queryProduk)) {
                         <label for="omset">Omset / Harga Jual</label>
                         <input class="form-control" type="text"
                             placeholder="Contoh : 300000 (tanpa tanda titik atau Rp)" name="omset">
+                        <br>
+
+                        <label for="buktiBayar">Bukti Pembayaran</label>
+                        <input type="file" class="form-control" name="buktiBayar">
                         <br>
 
                         <label for="namaPelanggan">Nama Customer</label>

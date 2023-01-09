@@ -149,6 +149,24 @@
                 scrollX: true
             });
         });
+
+        // Memeriksa tabel setiap 5 detik
+        setInterval(checkTable, 5000);
+
+        function checkTable() {
+            // Kirim permintaan Ajax ke server untuk memeriksa tabel
+            $.ajax({
+                url: 'check-table.php',
+                type: 'POST',
+                success: function(response) {
+                    // Jika ada perubahan data, mainkan file audio sebagai notifikasi suara
+                    if (response == 'update') {
+                        var audio = new Audio('music/notif.mp3');
+                        audio.play();
+                    }
+                }
+            });
+        }
         </script>
 </body>
 
