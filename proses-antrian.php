@@ -19,6 +19,7 @@ if (isset($_POST['daftar'])) {
     $finishing = implode(",", $_POST['isFinishing']);
     $workshop = $_POST['whereWorkshop'];
     $qc = $_POST['isQC'];
+    $buktiBayar = $_POST['buktiBayar'];
     $stsAntrian = 1;
 
     //Tanggal dan No. Antrian
@@ -38,12 +39,14 @@ if (isset($_POST['daftar'])) {
             $ekstensi = strtolower(end($pisahEkstensi));
 
             $file_tmp = $_FILES['uFile']['tmp_name'];
+            $tmp_buktiBayar = $_FILES['buktiBayar']['tmp_name'];
             $namaEnc = rand(1,999);
 
             $namaFileBaru = $namaEnc . '-' . $namafile;
 
             if (in_array($ekstensi, $izinEkstensi) === true) {
                 move_uploaded_file($file_tmp, 'file/' . $namaFileBaru);
+                move_uploaded_file
 
                 $sql = "INSERT INTO data_antrian (tanggal_antrian, no_antrian, nama_sales, keyword_stempel, nama_pekerjaan, mulai_kerja, selesai_kerja, tempat_workshop, nama_desainer, nama_operator, nama_finishing, nama_qc, file_desain) VALUES ('$tanggal', '$noAntrian', '$sales', '$keyword', '$pekerjaan', '$mulai', '$selesai', '$workshop', '$desainer', '$operator', '$finishing', '$qc', '$namaFileBaru');";
 
