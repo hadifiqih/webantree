@@ -39,7 +39,6 @@ if (isset($_POST['daftar'])) {
 
 
     if ($query && $queryPelanggan) {
-        echo "<script>alert('Antrian Sukses Dimasukkan')</script>";
         header('location:index.php');
     } else {
         echo "<script>alert('Antrian Gagal Dimasukkan')</script>";
