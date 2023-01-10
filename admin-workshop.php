@@ -100,6 +100,26 @@
         echo '</tr>';
     }
 
+
+    // Koneksi ke database MySQL
+
+    // Ambil data terbaru dari tabel 'data'
+    $result2 = mysqli_query($connect, 'SELECT * FROM data ORDER BY id DESC LIMIT 1');
+    $dataa = mysqli_fetch_assoc($result2);
+    print_r($dataa);
+
+    $prevData = null;
+
+    // Bandingkan data terbaru dengan data sebelumnya
+    if ($dataa != $prevData) {
+        // Output suara notifikasi menggunakan JavaScript
+        echo '<audio src="music/notif.mp3" autoplay></audio>';
+
+        // Simpan data terbaru sebagai data sebelumnya untuk perbandingan di iterasi selanjutnya
+        $prevData = $dataa;
+    }
+
+
     // Menutup koneksi ke database
     mysqli_close($connect);
     ?>
@@ -148,25 +168,25 @@
                 responsive: true,
                 scrollX: true
             });
-        });
 
-        // Memeriksa tabel setiap 5 detik
-        setInterval(checkTable, 5000);
+            // membuat audio element
+            var audio = new Audio('music/notif.mp3');
 
-        function checkTable() {
-            // Kirim permintaan Ajax ke server untuk memeriksa tabel
-            $.ajax({
-                url: 'check-table.php',
-                type: 'POST',
-                success: function(response) {
-                    // Jika ada perubahan data, mainkan file audio sebagai notifikasi suara
-                    if (response == 'update') {
-                        var audio = new Audio('music/notif.mp3');
-                        audio.play();
+            // membuat interval yang akan memeriksa database setiap 5 detik
+            setInterval(function() {
+                // menggunakan Ajax untuk memeriksa database
+                $.ajax({
+                    url: 'check-table.php',
+                    success: function(response) {
+                        // jika ada perubahan data, mainkan suara notifikasi
+                        if (response.hasChanged) {
+                            audio.play();
+                        }
                     }
-                }
-            });
-        }
+                });
+            }, 5000); // setiap 5 detik
+
+        });
         </script>
 </body>
 

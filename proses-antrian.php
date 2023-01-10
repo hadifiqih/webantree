@@ -60,11 +60,11 @@ if (isset($_POST['daftar'])) {
                        " - ".mysqli_error($connect));
             } else {
                 $_SESSION['successAntrian'];
-                header('location: list-antrian.php');
+                header('location: index.php');
             }
         } else {
             $_SESSION['salah_ekstensi'] = 'Upload file sesuai ekstensi!';
-            header('location: list-antrian.php');
+            header('location: index.php');
         }
     } else {
         // $_SESSION['kosong'] = 'Mohon maaf, file tidak boleh kosong!';
@@ -73,6 +73,6 @@ if (isset($_POST['daftar'])) {
 
         $query = mysqli_query($connect, $sql);
 
-        header('location: list-antrian.php?desainkosong');
+        header('location: index.php');
     }
 }

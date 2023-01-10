@@ -1,5 +1,6 @@
 {
     "require": {
-        "phpoffice/phpspreadsheet": "^1.26"
+        "phpoffice/phpspreadsheet": "^1.26",
+        "kreait/firebase-php": "^5.26"
     }
 }
