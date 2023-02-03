@@ -125,6 +125,7 @@
                                 <p class="fw-bold">Keterangan</p>
                             </div>
                             <div class="col-6">
+
                                 <p id="keywordStempel">'. $data['keyword_stempel'] .'</p>
                                 <p id="namaPekerjaan">'. $data['nama_pekerjaan'] .'</p>
                                 <p id="deadline">'. $data['selesai_kerja'] .'</p>

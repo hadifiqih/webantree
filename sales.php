@@ -81,12 +81,73 @@
                     echo '<td>' . $row['nama_qc'] . '</td>';
                     echo '<td>'. number_format($row['omset'], 0 , "," , ".") .'</td>';
                     //Tombol Dokumentasi
+                    
                     if($row['file_dokumentasi'] == ""){
-                        echo '<td class="text-center"><button type="button" class="btn btn-secondary btn-sm" disabled><i class="fa-regular fa-xs fa-circle-xmark"></i> Dokumentasi</button></td>';
-                    }else{
-                      echo '<td class="text-center"><a href="dokumentasi.php?no_antrian='. $row['no_antrian'].'" type="button" class="btn btn-success btn-sm"><i class="fa-xs fa-solid fa-arrow-up-right-from-square"></i> Dokumentasi</a></td>';
-                    }
+                        echo '<td class="text-center">
+                              <div class="btn-group" role="group" aria-label="Tombol Opsi">
+                              <button type="button" class="btn btn-danger btn-sm" disabled><i class="fa-regular fa-xs fa-circle-xmark"></i></button>
+                              <a id="tombolDetail" type="button" href="detail-antrian.php?no_antrian='.$row['no_antrian'].'" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailOrder'. $row['no_antrian'] .'" data-record-id="'.$row['no_antrian'].'" disabled><i class="fa-solid fa-circle-info"></i></a>
+                              </div>
+                              </td>';
+                
+                      }else{
+                      echo '<td class="text-center">
+                            <div class="btn-group" role="group" aria-label="Tombol Opsi">
+                            <a href="dokumentasi.php?no_antrian='. $row['no_antrian'].'" type="button" class="btn btn-success btn-sm"><i class="fa-xs fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a id="tombolDetail" type="button" href="detail-antrian.php?no_antrian='.$row['no_antrian'].'" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailOrder'. $row['no_antrian'] .'" data-record-id="'.$row['no_antrian'].'" disabled><i class="fa-solid fa-circle-info"></i></a>
+                            </div>
+                            </td>';
+                          }
                     echo '</tr>';
+
+                    echo '
+    <div class="modal fade" id="detailOrder'. $row['no_antrian'] .'" tabindex="-1" aria-labelledby="detailOrderLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailOrderLabel">
+                    <i class="fa-solid fa-list-check"></i> Detail Order
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="fw-bold">Keyword Stempel</p>
+                                <p class="fw-bold">Nama Pekerjaan</p>
+                                <p class="fw-bold">Deadline</p>
+                                <p class="fw-bold">Desainer</p>
+                                <p class="fw-bold">Operator</p>
+                                <p class="fw-bold">Finishing</p>
+                                <p class="fw-bold">QC</p>
+                                <p class="fw-bold">Omset</p>
+                                <p class="fw-bold">Keterangan</p>
+                            </div>
+                            <div class="col-6">
+
+                                <p id="keywordStempel">'. $row['keyword_stempel'] .'</p>
+                                <p id="namaPekerjaan">'. $row['nama_pekerjaan'] .'</p>
+                                <p id="deadline">'. $row['selesai_kerja'] .'</p>
+                                <p id="desainer">'. $row['nama_desainer'] .'</p>
+                                <p id="operator">'. $row['nama_operator'] .'</p>
+                                <p id="finishing">'. $row['nama_finishing'] .'</p>
+                                <p id="qc">'. $row['nama_qc'] .'</p>
+                                <p id="omset">'. $row['omset'] .'</p>
+                                <p id="keterangan">'. nl2br($row['keterangan']) .'</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark"></i> Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    ';
                 }
 
                 // Menutup koneksi ke database
