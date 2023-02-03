@@ -62,10 +62,10 @@
                     <th>Keyword</th>
                     <th>Pekerjaan</th>
                     <th>Deadline</th>
-                    <th>Desainer</th>
+                    <!-- <th>Desainer</th>
                     <th>Operator</th>
-                    <th>Finishing</th>
-                    <th>QC</th>
+                    <th>Finishing</th> 
+                    <th>QC</th>-->
                     <th>Omset</th>
                     <th>Opsi</th>
                 </tr>
@@ -84,41 +84,71 @@
         echo '<td>' . $data['keyword_stempel'] . '</td>';
         echo '<td>' . $data['nama_pekerjaan'] . '</td>';
         echo '<td>' . $data['selesai_kerja'] . '</td>';
-        echo '<td>' . $data['nama_desainer'] . '</td>';
-        echo '<td>' . $data['nama_operator'] . '</td>';
-        echo '<td>' . $data['nama_finishing'] . '</td>';
-        echo '<td>' . $data['nama_qc'] . '</td>';
+        // echo '<td>' . $data['nama_desainer'] . '</td>';
+        // echo '<td>' . $data['nama_operator'] . '</td>';
+        // echo '<td>' . $data['nama_finishing'] . '</td>';
+        // echo '<td>' . $data['nama_qc'] . '</td>';
         echo '<td>' . $data['omset'] . '</td>';
         //Tombol Opsi
         echo '<td class="text-center">';
         echo '<div class="btn-group" role="group" aria-label="Tombol Opsi">
-                        <a type="button" href="edit-antrian.php?no_antrian='.$data['no_antrian'].'" class="btn btn-warning btn-sm">Edit</a>
-                        <a type="button" href="delete-antrian.php?no_antrian='.$data['no_antrian'].'" class="btn btn-danger btn-sm" onclick="return confirm(\'Yakin ingin menghapus Antrian?\')">Hapus</a>
-                        <a id="tombolDetail" type="button" href="detail-antrian.php?no_antrian='.$data['no_antrian'].'" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailOrder" data-record-id="'.$data['no_antrian'].'" disabled>Detail</a>
-                      </div>';
+                        <a type="button" href="edit-antrian.php?no_antrian='.$data['no_antrian'].'" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a type="button" href="delete-antrian.php?no_antrian='.$data['no_antrian'].'" class="btn btn-danger btn-sm" onclick="return confirm(\'Yakin ingin menghapus Antrian?\')"><i class="fa-solid fa-trash"></i></a>
+                        <a id="tombolDetail" type="button" href="detail-antrian.php?no_antrian='.$data['no_antrian'].'" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailOrder'. $data['no_antrian'] .'" data-record-id="'.$data['no_antrian'].'" disabled><i class="fa-solid fa-circle-info"></i></a>
+                        </div>';
         echo '</td>';
         echo '</tr>';
+
+        // Start Modal Detail
+        echo '
+    <div class="modal fade" id="detailOrder'. $data['no_antrian'] .'" tabindex="-1" aria-labelledby="detailOrderLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailOrderLabel">
+                    <i class="fa-solid fa-list-check"></i> Detail Order
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="fw-bold">Keyword Stempel</p>
+                                <p class="fw-bold">Nama Pekerjaan</p>
+                                <p class="fw-bold">Deadline</p>
+                                <p class="fw-bold">Desainer</p>
+                                <p class="fw-bold">Operator</p>
+                                <p class="fw-bold">Finishing</p>
+                                <p class="fw-bold">QC</p>
+                                <p class="fw-bold">Omset</p>
+                                <p class="fw-bold">Keterangan</p>
+                            </div>
+                            <div class="col-6">
+                                <p id="keywordStempel">'. $data['keyword_stempel'] .'</p>
+                                <p id="namaPekerjaan">'. $data['nama_pekerjaan'] .'</p>
+                                <p id="deadline">'. $data['selesai_kerja'] .'</p>
+                                <p id="desainer">'. $data['nama_desainer'] .'</p>
+                                <p id="operator">'. $data['nama_operator'] .'</p>
+                                <p id="finishing">'. $data['nama_finishing'] .'</p>
+                                <p id="qc">'. $data['nama_qc'] .'</p>
+                                <p id="omset">'. $data['omset'] .'</p>
+                                <p id="keterangan">'. nl2br($data['keterangan']) .'</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark"></i> Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    ';
+        // <!-- End Modal Detail -->
     }
-
-
-    // Koneksi ke database MySQL
-
-    // Ambil data terbaru dari tabel 'data'
-    $result2 = mysqli_query($connect, 'SELECT * FROM data ORDER BY id DESC LIMIT 1');
-    $dataa = mysqli_fetch_assoc($result2);
-    print_r($dataa);
-
-    $prevData = null;
-
-    // Bandingkan data terbaru dengan data sebelumnya
-    if ($dataa != $prevData) {
-        // Output suara notifikasi menggunakan JavaScript
-        echo '<audio src="music/notif.mp3" autoplay></audio>';
-
-        // Simpan data terbaru sebagai data sebelumnya untuk perbandingan di iterasi selanjutnya
-        $prevData = $dataa;
-    }
-
 
     // Menutup koneksi ke database
     mysqli_close($connect);
@@ -127,32 +157,7 @@
         </table>
     </div>
 
-    <!-- Modal Detail Order -->
-    <div class="modal fade" id="detailOrder" tabindex="-1" aria-labelledby="detailOrderLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="detailOrderLabel">Detail Order</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>ID Order</th>
-                            <td><span id="orderId"></span></td>
-                        </tr>
-                        <tr>
-                            <th>Nama Sales</th>
-                            <td id="salesName"></td>
-                        </tr>
-                        <!-- Baris lainnya yang menampilkan detail keterangan order lainnya -->
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                </div>
-            </div>
-        </div>
+    
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
             integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
