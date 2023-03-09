@@ -45,6 +45,5 @@ if (isset($_POST['daftar'])) {
         header('location:index.php');
     } else {
         echo "<script>alert('Antrian Gagal Dimasukkan')</script>";
-        var_dump($query);
     }
 }
