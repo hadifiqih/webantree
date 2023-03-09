@@ -60,3 +60,9 @@ function registrasi($data)
 
     return mysqli_affected_rows($connect);
 }
+
+function formatRupiah($angka)
+{
+    $rupiah = "Rp " . number_format($angka, 0, ',', '.');
+    return $rupiah;
+}

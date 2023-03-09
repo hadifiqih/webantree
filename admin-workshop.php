@@ -54,7 +54,7 @@
         <!-- Button tambah antrian -->
         <a href="tambah-antrian.php" class="btn btn-sm btn-warning float-end ms-2">+ Tambah Antrian</a>
 
-
+        <div class="table-responsive">
         <table id="usersTable" class="table table-striped table-hover table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -103,7 +103,7 @@
         echo '
     <div class="modal fade" id="detailOrder'. $data['no_antrian'] .'" tabindex="-1" aria-labelledby="detailOrderLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
+            <di class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="detailOrderLabel">
                     <i class="fa-solid fa-list-check"></i> Detail Order
@@ -115,30 +115,77 @@
                         <div class="row">
                             <div class="col-6">
                                 <p class="fw-bold">Keyword Stempel</p>
+                            </div>
+                            <div class="col-6">
+                                <p id="keywordStempel">'. $data['keyword_stempel'] .'</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
                                 <p class="fw-bold">Nama Pekerjaan</p>
+                            </div>
+                            <div class="col-6">
+                                <p id="namaPekerjaan">'. $data['nama_pekerjaan'] .'</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
                                 <p class="fw-bold">Deadline</p>
+                            </div>
+                            <div class="col-6">
+                                <p id="deadline">'. $data['selesai_kerja'] .'</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
                                 <p class="fw-bold">Desainer</p>
+                            </div>
+                            <div class="col-6">
+                                <p id="desainer">'. $data['nama_desainer'] .'</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
                                 <p class="fw-bold">Operator</p>
+                            </div>
+                            <div class="col-6">
+                                <p id="operator">'. $data['nama_operator'] .'</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
                                 <p class="fw-bold">Finishing</p>
+                            </div>
+                            <div class="col-6">
+                                <p id="finishing">'. $data['nama_finishing'] .'</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
                                 <p class="fw-bold">QC</p>
+                            </div>
+                            <div class="col-6">
+                                <p id="qc">'. $data['nama_qc'] .'</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
                                 <p class="fw-bold">Omset</p>
+                            </div>
+                            <div class="col-6">
+                                <p id="omset">'. formatRupiah($data['omset']) .'</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
                                 <p class="fw-bold">Keterangan</p>
                             </div>
                             <div class="col-6">
-
-                                <p id="keywordStempel">'. $data['keyword_stempel'] .'</p>
-                                <p id="namaPekerjaan">'. $data['nama_pekerjaan'] .'</p>
-                                <p id="deadline">'. $data['selesai_kerja'] .'</p>
-                                <p id="desainer">'. $data['nama_desainer'] .'</p>
-                                <p id="operator">'. $data['nama_operator'] .'</p>
-                                <p id="finishing">'. $data['nama_finishing'] .'</p>
-                                <p id="qc">'. $data['nama_qc'] .'</p>
-                                <p id="omset">'. $data['omset'] .'</p>
                                 <p id="keterangan">'. nl2br($data['keterangan']) .'</p>
                             </div>
                         </div>
-                    </div>
-                </div>
+                            </div>
+                        </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     <i class="fa-solid fa-xmark"></i> Tutup
@@ -156,6 +203,7 @@
     ?>
             </tbody>
         </table>
+        </div>
     </div>
 
     
@@ -172,7 +220,11 @@
         $(document).ready(function() {
             $('#usersTable').DataTable({
                 responsive: true,
-                scrollX: true
+                scrollX: true,
+                "columnDefs" : [
+                    { "width" : "40%", "targets" : 1},
+                    { "width" : "20%", "targets" : 2},
+                ]
             });
 
             // membuat audio element

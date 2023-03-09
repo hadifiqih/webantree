@@ -165,6 +165,8 @@ while ($resultFinishing = mysqli_fetch_array($queryFinishing)) {
                                     <?php echo ($dataEdit['nama_qc']) ? "checked" : "" ?>>Ghofar
                                 <input class="mx-2" type="radio" name="isQC" value="Arvidi"
                                     <?php echo ($dataEdit['nama_qc']) ? "checked" : "" ?>>Arvidi
+                                <input class="mx-2" type="radio" name="isQC" value="Taufik"
+                                    <?php echo ($dataEdit['nama_qc']) ? "checked" : "" ?>>Taufik
                             </label>
                         </div>
                         <br>

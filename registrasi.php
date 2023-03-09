@@ -80,7 +80,7 @@ if (isset($_POST['register'])) {
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="mb-2 text-muted" for="namaUser">Nama Lengkap</label>
+                                    <label class="mb-2 text-muted" for="namaUser">Nama Brand (Yang Dipegang)</label>
                                     <input id="namaUser" type="text" class="form-control" placeholder="Contoh: Adi Pratama" name="namaUser" value="" required
                                         autofocus>
                                     <div class="invalid-feedback">
@@ -89,7 +89,7 @@ if (isset($_POST['register'])) {
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="mb-2 text-muted" for="namaKecil">Nama Panggilan</label>
+                                    <label class="mb-2 text-muted" for="namaKecil">Nama Sales (Pemegang)</label>
                                     <input id="namaKecil" type="text" class="form-control" placeholder="Contoh: Adi" name="namaKecil" value="" required
                                         autofocus>
                                     <div class="invalid-feedback">

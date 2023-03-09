@@ -22,10 +22,13 @@ if (isset($_POST['daftar'])) {
     $info = $_POST['iklanPelanggan'];
     $stsAntrian = 1;
 
-    $namaBuktibayar = rand(1, 999).'-'.$_FILES['buktiBayar']['name'];
-    $tmp_buktiBayar = $_FILES['buktiBayar']['tmp_name'];
-
-    move_uploaded_file($tmp_buktiBayar, 'bukti/' . $namaBuktibayar);
+    if (isset($_FILES['buktiBayar']) && $_FILES['buktiBayar']['error'] == 0) {
+        $namaBuktibayar = rand(1, 999).'-'.$_FILES['buktiBayar']['name'];
+        $tmp_buktiBayar = $_FILES['buktiBayar']['tmp_name'];
+        move_uploaded_file($tmp_buktiBayar, 'bukti/' . $namaBuktibayar);
+    } else {
+        $namaBuktibayar = NULL;
+    }
 
     //Tanggal Antrian
     $tanggal = $_POST['tanggal'];
@@ -42,5 +45,6 @@ if (isset($_POST['daftar'])) {
         header('location:index.php');
     } else {
         echo "<script>alert('Antrian Gagal Dimasukkan')</script>";
+        var_dump($query);
     }
 }

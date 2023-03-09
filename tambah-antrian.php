@@ -90,8 +90,7 @@ while ($resultProduk = mysqli_fetch_array($queryProduk)) {
                         <br>
 
                         <label for="keterangan">Keterangan / Spesifikasi </label>
-                        <input class="form-control" type="text"
-                            placeholder="Contoh : Trodat 4913, Flash 2255, dan keterangan lainnya" name="keterangan">
+                        <textarea class="form-control" name="keterangan" id="keterangan" cols="30" rows="10"></textarea>
                         <br>
 
                         <label for="omset">Omset / Harga Jual</label>
