@@ -30,6 +30,7 @@ if (isset($_POST['daftar'])) {
         $namaBuktibayar = NULL;
     }
 
+
     //Tanggal Antrian
     $tanggal = $_POST['tanggal'];
 
@@ -38,8 +39,6 @@ if (isset($_POST['daftar'])) {
 
     $query = mysqli_query($connect, $sql);
     $queryPelanggan = mysqli_query($connect, $sqlPelanggan);
-
-
 
     if ($query && $queryPelanggan) {
         header('location:index.php');
